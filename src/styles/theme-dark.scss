@@ -1,0 +1,34 @@
+@forward 'element-plus/theme-chalk/src/dark/var.scss' with (
+  $colors: (
+    'primary': (
+      'base': #126bae,
+    ),
+  ),
+  $bg-color: (
+    '': #172144,
+    'overlay': #1f2c58,
+  )
+);
+
+@use 'element-plus/theme-chalk/src/dark/css-vars.scss' as *;
+
+html.dark {
+  --layout-bg-color: #172144;
+
+  --layout-topbar-color: #444444;
+
+  --layout-tabbar-bg-color: #1f2c58;
+
+  --layout-menu-bg-color: #1f2c58;
+  --layout-menu-border-color: var(--layout-bg-color);
+  --layout-menu-sub-bg-color: var(--layout-main-bg-color);
+  --layout-menu-sub-hover-bg-color: var(--layout-menu-bg-color);
+  --layout-menu-item-bg-color: var(--layout-main-bg-color);
+  --layout-menu-item-hover-bg-color: var(--layout-bg-color);
+
+  --layout-main-bg-color: #2b3b6e;
+  --layout-main-text-color: #fff;
+
+  --layout-dialog-header-color: #163764;
+  --layout-table-row-bg: #172144;
+}

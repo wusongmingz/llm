@@ -1,0 +1,47 @@
+kind: pipeline
+type: docker
+name: webApp
+steps:
+  - name: build_project
+    image: node:16-slim
+    depends_on: [clone]
+    volumes:
+      - name: node_modules
+        path: /drone/src/node_modules
+    commands:
+      - pwd
+      - du -sh *
+      - npm config set registry https://registry.npm.taobao.org
+      - npm install
+      - npm run build:prod
+      - du -sh *
+
+  - name: build_image
+    image: plugins/docker:20
+    depends_on: [build_project]
+    environment:
+      DRONE_REPO_BRANCH: master
+    # volumes:
+    #   - name: docker-sock
+    #     path: /var/run/docker.sock
+    settings:
+      dockerfile: Dockerfile
+      registry: registry.cn-beijing.aliyuncs.com
+      repo: registry.cn-beijing.aliyuncs.com/dkzx_test/webapp
+      auto_tag: true
+      insecure: true
+      username:
+        from_secret: docker_username
+      password:
+        from_secret: docker_password
+volumes:
+  # - name: docker-sock
+  #   host:
+  #     path: /var/run/docker.sock
+  - name: node_modules
+    host:
+      path: /root/.node/node_modules
+trigger:
+  ref:
+    - refs/tags/*
+    - refs/heads/master

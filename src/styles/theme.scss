@@ -1,0 +1,49 @@
+@forward 'element-plus/theme-chalk/src/common/var.scss' with (
+  $colors: (
+    'primary': (
+      'base': #7763f1,
+    ),
+  ),
+  $menu: (
+    'item-height': 50px,
+    'active-bg-color': var(--layout-bg-color),
+    'base-level-padding': 25px,
+    'level-padding': 10px,
+  ),
+  $card: (
+    'padding': 10px,
+  )
+);
+
+@use 'element-plus/theme-chalk/src/index.scss' as *;
+
+:root {
+  --layout-bg-color: #f7f8fa;
+
+  --layout-topbar-height: 80px;
+  // --layout-topbar-color: var(--el-color-primary);
+  --layout-topbar-bg: rgba(255, 255, 255, 1);
+
+  --layout-tabbar-height: 50px;
+  --layout-tabbar-bg-color: #fff;
+
+  --layout-menu-width: 240px;
+  --layout-menu-bg-color: linear-gradient(to bottom, #d70010 0%, #fff 100%);
+  --layout-menu-border-color: #fff;
+  --layout-menu-sub-bg-color: transparent;
+  --layout-menu-sub-hover-bg-color: #e7f0f7;
+  --layout-menu-item-bg-color: #ffffff;
+  --layout-menu-item-hover-bg-color: #cbcdfe;
+
+  --el-menu-active-bg-color: #7763f1;
+  --el-menu-hover-bg-color: #E0E2FF;
+
+  --layout-main-bg-color: #fff;
+  --layout-main-text-color: #7f7f7f;
+
+  --layout-dialog-header-color: #f0f1f3;
+  --layout-table-row-bg: #f2f6fc;
+
+  --table-row-striped: #f5f6f7;
+  --table-row-bg-hover: #ECEFF6;
+}

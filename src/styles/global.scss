@@ -1,0 +1,208 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url('@/assets/font/font.css');
+body {
+  margin: 0;
+  // font-family: Verdana, '微软雅黑', 'Microsoft Yahei', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell',
+  //   'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  font-family: 'Alibaba_PuHuiTi_2.0_55_Regular_55_Regular';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+#root {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  // width: 100%;
+  // overflow: hidden !important;
+
+  width: 100vw;
+  height: 100vh;
+}
+
+#app {
+  // width: 100vw;
+  // height: 100vh;
+  width: 100%;
+  height: 100%;
+}
+
+/* 滚动条样式 */
+::-webkit-scrollbar {
+  width: 5px; /*滚动条宽度*/
+  height: 4px; /*滚动条高度*/
+}
+/* 定义滚动条轨道 内阴影+圆角 */
+::-webkit-scrollbar-track {
+  /* -webkit-box-shadow: inset 0 0 3px rgba(0,0,0,0.3);   */
+  border-radius: 20px; /* 滚动条的背景区域的圆角 */
+  background-color: rgba(96, 98, 102, 0.05); /* 滚动条的背景颜色 */
+}
+/* 定义滑块 内阴影+圆角 */
+::-webkit-scrollbar-thumb {
+  border-radius: 20px; /* 滚动条的圆角 */
+  /* -webkit-box-shadow: inset 0 0 3px rgba(0,0,0,.3);   */
+  background-color: rgba(96, 98, 102, 0.28); /* 滚动条的背景颜色 */
+}
+.el-button:hover {
+  background-color: #cbcdfe;
+  color: #333;
+}
+.el-select .el-input__wrapper {
+  box-shadow: 0 0 0 1px #cbcdfe inset;
+}
+.el-select .el-input__wrapper.is-focus {
+  box-shadow: 0 0 0 1px #cbcdfe inset !important;
+}
+/* 这个类用于超出部分显示省略号 */
+.ellipsis {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+/* 夜间模式所需样式 */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+.dark::view-transition-old(root) {
+  z-index: 1;
+}
+.dark::view-transition-new(root) {
+  z-index: 999;
+}
+::view-transition-old(root) {
+  z-index: 999;
+}
+::view-transition-new(root) {
+  z-index: 1;
+}
+
+.table-edit-head {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .table-edit-icon {
+    margin-left: 5px;
+    cursor: pointer;
+  }
+}
+
+.search-form-card {
+  --el-card-padding: 10px 10px 0;
+}
+.stick-top {
+  position: sticky;
+  top: -10px;
+  z-index: 10;
+}
+.select-date {
+  .el-year-table td.current:not(.disabled) .cell {
+    color: #ffffff;
+    font-weight: bold !important;
+    background-color: var(--el-menu-active-bg-color); // 这里应用的是项目的默认样式颜色，跟整个系统保持统一
+    border-radius: 100px;
+    // color: var(--el-menu-active-bg-color);
+  }
+  .el-year-table td.today .cell {
+    font-weight: normal;
+    color: #606266;
+  }
+  .el-month-table td.current:not(.disabled) .cell {
+    color: #ffffff;
+    font-weight: bold !important;
+    background-color: var(--el-menu-active-bg-color);
+    border-radius: 100px;
+    // color: var(--el-menu-active-bg-color);
+  }
+  .el-month-table td.today .cell {
+    font-weight: normal;
+    color: #606266;
+  }
+  .el-date-table td.today .el-date-table-cell__text {
+    color: #606266;
+    font-weight: normal;
+  }
+  .el-date-table td.current:not(.disabled) .el-date-table-cell__text {
+    color: #ffffff;
+    font-weight: bold !important;
+    background-color: var(--el-menu-active-bg-color);
+    // color: var(--el-menu-active-bg-color);
+  }
+}
+
+pre.hljs {
+  padding: 12px 2px 12px 40px !important;
+  border-radius: 5px !important;
+  position: relative;
+  font-size: 14px !important;
+  line-height: 22px !important;
+  overflow: hidden !important;
+  code {
+    font-family: 'Alibaba_PuHuiTi_2.0_55_Regular_55_Regular';
+    display: block !important;
+    margin: 0 10px !important;
+    overflow-x: auto !important;
+  }
+  .line-numbers-rows {
+    position: absolute;
+    pointer-events: none;
+    top: 12px;
+    bottom: 12px;
+    left: 0;
+    font-size: 100%;
+    width: 40px;
+    text-align: center;
+    letter-spacing: -1px;
+    border-right: 1px solid rgba(0, 0, 0, 0.66);
+    user-select: none;
+    counter-reset: linenumber;
+    span {
+      pointer-events: none;
+      display: block;
+      counter-increment: linenumber;
+      &:before {
+        content: counter(linenumber);
+        color: #999;
+        display: block;
+        text-align: center;
+      }
+    }
+  }
+  b.name {
+    position: absolute;
+    top: 2px;
+    right: 50px;
+    z-index: 10;
+    color: #999;
+    pointer-events: none;
+  }
+  .copy-btn {
+    font-family: 'Alibaba_PuHuiTi_2.0_55_Regular_55_Regular';
+    position: absolute;
+    top: 2px;
+    right: 4px;
+    z-index: 10;
+    color: #333;
+    cursor: pointer;
+    background-color: #fff;
+    border: 0;
+    border-radius: 2px;
+  }
+}
